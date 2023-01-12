@@ -24,10 +24,13 @@ class TextEditor(object):
         :type k: int
         :rtype: int
         """
-        # texto_cursor = self.texto[:self.cursor]
-        self.texto = self.texto[:-k]
-        self.cursor = (self.cursor-k)+1
-        print(k)
+        i=0
+        for i in range(k): 
+            self.texto = self.texto[:-1]
+            self.cursor = (self.cursor-1)+1
+            i+=1
+            if len(self.texto) == 0: break
+        print(i)
         # leetcode
         # return k
         # for k elements text.pop
@@ -43,8 +46,8 @@ class TextEditor(object):
         # retorn min(10,lentext_ caracteres na esquerda do cursor)
         if len(self.texto) > k:
             self.cursor = self.cursor-k
-        texto_cursor= self.texto[:-self.cursor]
-        print(texto_cursor[-10:])
+        self.texto= self.texto[:-self.cursor]
+        print(self.texto[-10:])
             # leetcode
             # return texto_cursor[-10:]
     def cursorRight(self, k):
@@ -55,8 +58,8 @@ class TextEditor(object):
         #-k cursor 
         if len(self.texto) > k:
             self.cursor = self.cursor+k
-        texto_cursor= self.texto[:self.cursor]
-        print(texto_cursor[-10:])
+        self.texto= self.texto[:self.cursor]
+        print(self.texto[-10:])
             # leetcode
             # return texto_cursor[-10:]
         
@@ -74,3 +77,6 @@ obj.cursorLeft(8)
 obj.deleteText(10)
 obj.cursorLeft(2)
 obj.cursorRight(6)
+
+#o que está errado é que eu perco o que vem depois do cursor
+#na hora de deletar o que ta antes do cursor ele morre
