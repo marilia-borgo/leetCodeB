@@ -16,21 +16,27 @@ class TextEditor:
         retorno = min(self.cursor, k) 
         self.cursor = max(0,self.cursor-k)
         self.texto= inicio + fim
-        return retorno
+        print(retorno)
+        # leetcode
+        # return retorno
 
     def cursorLeft(self, k: int) -> str:
         if self.cursor - k < 0:
             self.cursor = 0
         else:
             self.cursor -= k
-        return self.getTexto()
+        # leetcode
+        # return self.getTexto()
+        print(self.getTexto())
 
     def cursorRight(self, k: int) -> str:
         if self.cursor + k > len(self.texto):
             self.cursor = len(self.texto) 
         else:
             self.cursor += k
-        return self.getTexto()
+        # leetcode
+        # return self.getTexto()
+        print(self.getTexto())
 
-    def getTexto(self) -> str:
+    def getTexto(self) -> str: 
         return self.texto[max(0 , self.cursor-10):min(self.cursor, len(self.texto))]
