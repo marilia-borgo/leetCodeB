@@ -1,18 +1,22 @@
 # https://leetcode.com/problems/count-all-possible-routes/
 
 
-def rotas_possiveis(caminho,start,finish,fuel):
-    partida = caminho[start]
-    destino = caminho[finish]
-    rotas_possiveis=0
-    if abs(partida-destino) < fuel:
-        rotas_possiveis+=1
-    meio=caminho[caminho.index(partida):caminho.index(destino)+1]
-    for element in meio:
-        if not element is 0 and meio[-1]:
-            gas=abs(meio[0] - meio[element])
-            if gas > fuel:
-                rotas_possíveis+=1
-    return rotas_possiveis
+def rotas_possiveis(curr_city, destination, curr_fuel, cities):
+    if curr_fuel < 0:
+        return 0
+    route_count = 0
+    if curr_city == destination:
+        route_count =+1
+    
+    for next_city in range(len(cities)):
+        if next_city != curr_city:
+            cost = abs(cities[curr_city] - cities[next_city])
+            route_count += rotas_possiveis(next_city, destination,curr_fuel-cost, cities)
+    return route_count
+
+def solution_1(cities, start,destination, fuel):
+    return rotas_possiveis(start, destination, fuel, cities)
+
+solution_1([2,3,6,8,4],0,2,10)   
 
 
