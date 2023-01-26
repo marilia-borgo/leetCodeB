@@ -14,8 +14,9 @@ def rotas_possiveis(curr_city, destination, curr_fuel, cities):
             route_count += rotas_possiveis(next_city, destination,curr_fuel-cost, cities)
     return route_count
 
+#só rodar o arquivo, pq essa função retorna o resultado
 def solution_1(cities, start,destination, fuel):
-    return rotas_possiveis(start, destination, fuel, cities)
+    print( rotas_possiveis(start, destination, fuel, cities))
 
 solution_1([2,3,6,8,4],0,2,10)   
 
